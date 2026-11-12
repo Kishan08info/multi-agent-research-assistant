@@ -1,0 +1,467 @@
+{
+  "summary": {
+    "n_questions": 10,
+    "n_answerable": 8,
+    "n_unanswerable": 2,
+    "multi_agent": {
+      "answerable_accuracy": 1.0,
+      "abstention_recall": 1.0,
+      "citation_coverage": 1.0,
+      "avg_tool_calls": 3.7,
+      "avg_latency_ms": 0.74
+    },
+    "single_agent_baseline": {
+      "answerable_accuracy": 0.75,
+      "abstention_recall": 0.0
+    }
+  },
+  "per_question": [
+    {
+      "id": "q01",
+      "question": "What is Northwind Analytics Pro plan price?",
+      "answerable": true,
+      "expected_facts": [
+        "$99"
+      ],
+      "decision": "ANSWER",
+      "answer": "The Northwind Analytics API allows 1,000 requests per day on the Pro plan and 10,000 requests per day on the Enterprise plan. [api-docs] The Pro plan costs $99 per month and includes 100,000 events per month. [pricing-2025] The Acme Pro plan costs $129 per month and includes 50,000 events per month. [acme-pricing]",
+      "facts_present": true,
+      "tool_calls": 4,
+      "latency_ms": 1.1,
+      "trace": [
+        {
+          "node": "plan",
+          "sub_questions": 3
+        },
+        {
+          "node": "search",
+          "pages": [
+            "pricing-2025",
+            "api-docs",
+            "acme-pricing"
+          ]
+        },
+        {
+          "node": "summarise",
+          "draft_claims": 3
+        },
+        {
+          "node": "fact_check",
+          "supported": 3,
+          "dropped": 0
+        },
+        {
+          "node": "decide",
+          "decision": "ANSWER",
+          "claims_used": 3,
+          "claims_dropped": 0
+        }
+      ],
+      "baseline_decision": "ANSWER",
+      "baseline_answer": "The Pro plan cost $79 per month. [pricing-2024-archive]",
+      "baseline_facts_present": false
+    },
+    {
+      "id": "q02",
+      "question": "What is the Northwind Analytics API daily request limit on the Pro plan?",
+      "answerable": true,
+      "expected_facts": [
+        "1,000"
+      ],
+      "decision": "ANSWER",
+      "answer": "The Northwind Analytics API allows 1,000 requests per day on the Pro plan and 10,000 requests per day on the Enterprise plan. [api-docs] Customers on the Enterprise plan can request a custom retention period of up to 12 months for raw events. [retention-policy] The Pro plan costs $99 per month and includes 100,000 events per month. [pricing-2025]",
+      "facts_present": true,
+      "tool_calls": 4,
+      "latency_ms": 0.81,
+      "trace": [
+        {
+          "node": "plan",
+          "sub_questions": 3
+        },
+        {
+          "node": "search",
+          "pages": [
+            "api-docs",
+            "retention-policy",
+            "pricing-2025"
+          ]
+        },
+        {
+          "node": "summarise",
+          "draft_claims": 3
+        },
+        {
+          "node": "fact_check",
+          "supported": 3,
+          "dropped": 0
+        },
+        {
+          "node": "decide",
+          "decision": "ANSWER",
+          "claims_used": 3,
+          "claims_dropped": 0
+        }
+      ],
+      "baseline_decision": "ANSWER",
+      "baseline_answer": "The Northwind Analytics API allows 1,000 requests per day on the Pro plan and 10,000 requests per day on the Enterprise plan. [api-docs]",
+      "baseline_facts_present": true
+    },
+    {
+      "id": "q03",
+      "question": "What is Northwind Analytics monthly churn rate in 2025?",
+      "answerable": true,
+      "expected_facts": [
+        "4.2"
+      ],
+      "decision": "ANSWER",
+      "answer": "Northwind Analytics reported monthly churn of 4.2 percent in 2025, down from 5.1 percent in 2024. [churn-report]",
+      "facts_present": true,
+      "tool_calls": 3,
+      "latency_ms": 0.53,
+      "trace": [
+        {
+          "node": "plan",
+          "sub_questions": 2
+        },
+        {
+          "node": "search",
+          "pages": [
+            "churn-report",
+            "security"
+          ]
+        },
+        {
+          "node": "summarise",
+          "draft_claims": 1
+        },
+        {
+          "node": "fact_check",
+          "supported": 1,
+          "dropped": 0
+        },
+        {
+          "node": "decide",
+          "decision": "ANSWER",
+          "claims_used": 1,
+          "claims_dropped": 0
+        }
+      ],
+      "baseline_decision": "ANSWER",
+      "baseline_answer": "Northwind Analytics reported monthly churn of 4.2 percent in 2025, down from 5.1 percent in 2024. [churn-report]",
+      "baseline_facts_present": true
+    },
+    {
+      "id": "q04",
+      "question": "How much did Meridian Health reduce reporting time after deploying Northwind Analytics?",
+      "answerable": true,
+      "expected_facts": [
+        "40"
+      ],
+      "decision": "ANSWER",
+      "answer": "Meridian Health deployed Northwind Analytics across 14 clinics in 2025. [meridian-case] Reporting time fell by 40 percent after the rollout, from 10 hours per week to 6 hours per week. [meridian-case]",
+      "facts_present": true,
+      "tool_calls": 2,
+      "latency_ms": 0.5,
+      "trace": [
+        {
+          "node": "plan",
+          "sub_questions": 1
+        },
+        {
+          "node": "search",
+          "pages": [
+            "meridian-case"
+          ]
+        },
+        {
+          "node": "summarise",
+          "draft_claims": 2
+        },
+        {
+          "node": "fact_check",
+          "supported": 2,
+          "dropped": 0
+        },
+        {
+          "node": "decide",
+          "decision": "ANSWER",
+          "claims_used": 2,
+          "claims_dropped": 0
+        }
+      ],
+      "baseline_decision": "ANSWER",
+      "baseline_answer": "Meridian Health deployed Northwind Analytics across 14 clinics in 2025. [meridian-case]",
+      "baseline_facts_present": false
+    },
+    {
+      "id": "q05",
+      "question": "What event throughput does the Northwind Analytics Kafka ingestion pipeline sustain?",
+      "answerable": true,
+      "expected_facts": [
+        "50,000"
+      ],
+      "decision": "ANSWER",
+      "answer": "The data platform team owns the Kafka ingestion pipeline and the warehouse models. [engineering-blog] The ingestion pipeline sustains 50,000 events per second at peak load. [kafka-ingestion]",
+      "facts_present": true,
+      "tool_calls": 4,
+      "latency_ms": 0.64,
+      "trace": [
+        {
+          "node": "plan",
+          "sub_questions": 3
+        },
+        {
+          "node": "search",
+          "pages": [
+            "kafka-ingestion",
+            "engineering-blog",
+            "retention-policy"
+          ]
+        },
+        {
+          "node": "summarise",
+          "draft_claims": 2
+        },
+        {
+          "node": "fact_check",
+          "supported": 2,
+          "dropped": 0
+        },
+        {
+          "node": "decide",
+          "decision": "ANSWER",
+          "claims_used": 2,
+          "claims_dropped": 0
+        }
+      ],
+      "baseline_decision": "ANSWER",
+      "baseline_answer": "The ingestion pipeline sustains 50,000 events per second at peak load. [kafka-ingestion]",
+      "baseline_facts_present": true
+    },
+    {
+      "id": "q06",
+      "question": "How long does Northwind Analytics retain raw event data?",
+      "answerable": true,
+      "expected_facts": [
+        "90 days"
+      ],
+      "decision": "ANSWER",
+      "answer": "Northwind Analytics retains raw event data for 90 days. [retention-policy] The platform retains raw event data for 90 days and aggregated metrics for 24 months. [security]",
+      "facts_present": true,
+      "tool_calls": 4,
+      "latency_ms": 0.63,
+      "trace": [
+        {
+          "node": "plan",
+          "sub_questions": 3
+        },
+        {
+          "node": "search",
+          "pages": [
+            "retention-policy",
+            "security",
+            "engineering-blog"
+          ]
+        },
+        {
+          "node": "summarise",
+          "draft_claims": 2
+        },
+        {
+          "node": "fact_check",
+          "supported": 2,
+          "dropped": 0
+        },
+        {
+          "node": "decide",
+          "decision": "ANSWER",
+          "claims_used": 2,
+          "claims_dropped": 0
+        }
+      ],
+      "baseline_decision": "ANSWER",
+      "baseline_answer": "Northwind Analytics retains raw event data for 90 days. [retention-policy]",
+      "baseline_facts_present": true
+    },
+    {
+      "id": "q07",
+      "question": "What is the Acme Corp Pro plan price?",
+      "answerable": true,
+      "expected_facts": [
+        "$129"
+      ],
+      "decision": "ANSWER",
+      "answer": "The Acme Pro plan costs $129 per month and includes 50,000 events per month. [acme-pricing] Acme Corp is a competing analytics vendor. [acme-pricing] The Pro plan costs $99 per month and includes 100,000 events per month. [pricing-2025]",
+      "facts_present": true,
+      "tool_calls": 4,
+      "latency_ms": 0.69,
+      "trace": [
+        {
+          "node": "plan",
+          "sub_questions": 3
+        },
+        {
+          "node": "search",
+          "pages": [
+            "acme-pricing",
+            "pricing-2025",
+            "api-docs"
+          ]
+        },
+        {
+          "node": "summarise",
+          "draft_claims": 3
+        },
+        {
+          "node": "fact_check",
+          "supported": 3,
+          "dropped": 0
+        },
+        {
+          "node": "decide",
+          "decision": "ANSWER",
+          "claims_used": 3,
+          "claims_dropped": 0
+        }
+      ],
+      "baseline_decision": "ANSWER",
+      "baseline_answer": "The Acme Pro plan costs $129 per month and includes 50,000 events per month. [acme-pricing]",
+      "baseline_facts_present": true
+    },
+    {
+      "id": "q08",
+      "question": "What is Northwind Analytics net revenue retention in 2025?",
+      "answerable": true,
+      "expected_facts": [
+        "112"
+      ],
+      "decision": "ANSWER",
+      "answer": "Net revenue retention reached 112 percent in 2025. [churn-report]",
+      "facts_present": true,
+      "tool_calls": 3,
+      "latency_ms": 0.51,
+      "trace": [
+        {
+          "node": "plan",
+          "sub_questions": 2
+        },
+        {
+          "node": "search",
+          "pages": [
+            "churn-report",
+            "retention-policy"
+          ]
+        },
+        {
+          "node": "summarise",
+          "draft_claims": 1
+        },
+        {
+          "node": "fact_check",
+          "supported": 1,
+          "dropped": 0
+        },
+        {
+          "node": "decide",
+          "decision": "ANSWER",
+          "claims_used": 1,
+          "claims_dropped": 0
+        }
+      ],
+      "baseline_decision": "ANSWER",
+      "baseline_answer": "Net revenue retention reached 112 percent in 2025. [churn-report]",
+      "baseline_facts_present": true
+    },
+    {
+      "id": "q09",
+      "question": "Who is the chief executive officer of Northwind Analytics?",
+      "answerable": false,
+      "expected_facts": [],
+      "decision": "ABSTAIN",
+      "answer": null,
+      "facts_present": null,
+      "tool_calls": 5,
+      "latency_ms": 1.1,
+      "trace": [
+        {
+          "node": "plan",
+          "sub_questions": 3
+        },
+        {
+          "node": "search",
+          "pages": [
+            "integrations",
+            "retention-policy",
+            "kafka-ingestion"
+          ]
+        },
+        {
+          "node": "summarise",
+          "draft_claims": 0
+        },
+        {
+          "node": "fact_check",
+          "supported": 0,
+          "dropped": 0
+        },
+        {
+          "node": "retry_search",
+          "supported_after_retry": 0
+        },
+        {
+          "node": "decide",
+          "decision": "ABSTAIN",
+          "reason": "no claim survived fact-checking"
+        }
+      ],
+      "baseline_decision": "ANSWER",
+      "baseline_answer": "Northwind Analytics integrates with Salesforce, Snowflake, dbt, and Slack. [integrations]",
+      "baseline_facts_present": null
+    },
+    {
+      "id": "q10",
+      "question": "What was Northwind Analytics total revenue in 2025?",
+      "answerable": false,
+      "expected_facts": [],
+      "decision": "ABSTAIN",
+      "answer": null,
+      "facts_present": null,
+      "tool_calls": 4,
+      "latency_ms": 0.85,
+      "trace": [
+        {
+          "node": "plan",
+          "sub_questions": 2
+        },
+        {
+          "node": "search",
+          "pages": [
+            "churn-report",
+            "security"
+          ]
+        },
+        {
+          "node": "summarise",
+          "draft_claims": 0
+        },
+        {
+          "node": "fact_check",
+          "supported": 0,
+          "dropped": 0
+        },
+        {
+          "node": "retry_search",
+          "supported_after_retry": 0
+        },
+        {
+          "node": "decide",
+          "decision": "ABSTAIN",
+          "reason": "no claim survived fact-checking"
+        }
+      ],
+      "baseline_decision": "ANSWER",
+      "baseline_answer": "Net revenue retention reached 112 percent in 2025. [churn-report]",
+      "baseline_facts_present": null
+    }
+  ]
+}

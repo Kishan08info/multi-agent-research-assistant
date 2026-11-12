@@ -1,0 +1,16 @@
+{
+  "n_questions": 10,
+  "n_answerable": 8,
+  "n_unanswerable": 2,
+  "multi_agent": {
+    "answerable_accuracy": 1.0,
+    "abstention_recall": 1.0,
+    "citation_coverage": 1.0,
+    "avg_tool_calls": 3.7,
+    "avg_latency_ms": 0.74
+  },
+  "single_agent_baseline": {
+    "answerable_accuracy": 0.75,
+    "abstention_recall": 0.0
+  }
+}
